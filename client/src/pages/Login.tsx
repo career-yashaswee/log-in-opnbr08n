@@ -11,7 +11,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,6 +21,22 @@ function Login() {
     setLoading(true);
     try {
       // TODO: Make a POST request to '/api/auth/login'
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        toast.error(data.error);
+        setLoading(false);
+        return;
+      }
+      localStorage.setItem('user', JSON.stringify(data.user));
+      navigate('/dashboard');
+      setLoading(false);
       // Hint: Use fetch() with method: 'POST', headers, and body
       // The body should be JSON with username and password
       // TODO: Parse the response as JSON
