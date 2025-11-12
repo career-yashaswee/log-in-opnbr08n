@@ -6,7 +6,7 @@ import { LoginForm } from '@/components/login-form';
 function Login() {
   // TODO: Add state management for username, password, and loading
   // Hint: Use useState hook for each
-  
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -19,6 +19,7 @@ function Login() {
 
     // TODO: Set loading state to true
 
+    setLoading(true);
     try {
       // TODO: Make a POST request to '/api/auth/login'
       // Hint: Use fetch() with method: 'POST', headers, and body
