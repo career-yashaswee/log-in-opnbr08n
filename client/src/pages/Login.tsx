@@ -6,6 +6,9 @@ import { LoginForm } from '@/components/login-form';
 function Login() {
   // TODO: Add state management for username, password, and loading
   // Hint: Use useState hook for each
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
